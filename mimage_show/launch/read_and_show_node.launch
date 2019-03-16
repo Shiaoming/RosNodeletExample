@@ -1,0 +1,11 @@
+<launch>
+
+    <!-- camera reader -->
+    <node name="my_camera_read_node" pkg="camera_read" type="camera_read_node" />
+
+    <!-- image show-->
+    <node name="my_image_show_node" pkg="mimage_show" type="mimage_show_node">
+        <remap from="/my_image_show_node/color" to="/my_camera_read_node/color"/>
+    </node>
+
+</launch>

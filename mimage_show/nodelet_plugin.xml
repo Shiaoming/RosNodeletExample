@@ -1,0 +1,7 @@
+<library path="lib/libmimage_show_nodelet">
+    <class name="mimage_show_nodelet" type="MImageShowNodelet" base_class_type="nodelet::Nodelet">
+        <description>
+            image show.
+        </description>
+    </class>
+</library>

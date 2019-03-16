@@ -1,0 +1,20 @@
+<launch>
+
+    <arg name="nodelet_manager"   default="example"/>
+
+    <!-- nodelet manager -->
+    <node pkg="nodelet" type="nodelet" name="$(arg nodelet_manager)" args="manager" output="screen"/>
+
+    <!-- image show-->
+    <node pkg="nodelet" type="nodelet" name="my_image_show_nodelet"
+          args="load mimage_show_nodelet $(arg nodelet_manager)" output="screen" required="true">
+        <remap from="/my_image_show_nodelet/color" to="/my_camera_read_nodelet/color"/>
+    </node>
+
+    <!-- camera reader -->
+    <!--work in main thread, if it is loaded before image_show, came_read will block the launch of image_show-->
+    <node pkg="nodelet" type="nodelet" name="my_camera_read_nodelet"
+          args="load camera_read_nodelet $(arg nodelet_manager)" output="screen" required="true"/>
+
+
+</launch>
